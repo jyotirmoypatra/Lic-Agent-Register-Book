@@ -7,8 +7,11 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,11 +23,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.lang.reflect.Type;
+
 public class ViewDetailsActivity extends AppCompatActivity {
 
     String setName, setPhone, setAddress, setDOB, setPremium, setPolicyTable, setDOC, setDOM, setDLP, setUid;
-    TextView name, phone, address, dateOfBirth, premium, policyTable, dateOfCommitment, dateOfMaturity, dateOfLastPayment;
-    ImageView delete;
+    EditText name, phone, address, dateOfBirth, premium, policyTable, dateOfCommitment, dateOfMaturity, dateOfLastPayment;
+    ImageView delete,edit,saveBtn;
     ProgressDialog pd;
     FirebaseDatabase database;
     FirebaseAuth auth;
@@ -129,6 +134,63 @@ public class ViewDetailsActivity extends AppCompatActivity {
                 builder.create().show();
             }
         });
+
+
+        saveBtn=findViewById(R.id.save_btn);
+        edit=findViewById(R.id.edit_Btn);
+
+
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+              enableEditText();
+                edit.setVisibility(View.GONE);
+                saveBtn.setVisibility(View.VISIBLE);
+            }
+        });
+
+
+
+
+    }
+
+    private void enableEditText() {
+        name.setEnabled(true);
+        name.setBackgroundColor(Color.WHITE);
+        name.setPadding(10,2,10,2);
+
+        phone.setEnabled(true);
+        phone.setBackgroundColor(Color.WHITE);
+        phone.setPadding(10,2,10,2);
+
+        address.setEnabled(true);
+        address.setBackgroundColor(Color.WHITE);
+        address.setPadding(10,2,10,2);
+
+        dateOfBirth.setEnabled(true);
+        dateOfBirth.setBackgroundColor(Color.WHITE);
+        dateOfBirth.setPadding(10,2,10,2);
+
+        premium.setEnabled(true);
+        premium.setBackgroundColor(Color.WHITE);
+        premium.setPadding(10,2,10,2);
+
+        policyTable.setEnabled(true);
+        policyTable.setBackgroundColor(Color.WHITE);
+        policyTable.setPadding(10,2,10,2);
+
+        dateOfCommitment.setEnabled(true);
+        dateOfCommitment.setBackgroundColor(Color.WHITE);
+        dateOfCommitment.setPadding(10,2,10,2);
+
+        dateOfMaturity.setEnabled(true);
+        dateOfMaturity.setBackgroundColor(Color.WHITE);
+        dateOfMaturity.setPadding(10,2,10,2);
+
+       dateOfLastPayment.setEnabled(true);
+        dateOfLastPayment.setBackgroundColor(Color.WHITE);
+        dateOfLastPayment.setPadding(10,2,10,2);
 
 
     }

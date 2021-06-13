@@ -18,6 +18,7 @@
           android:layout_height="wrap_content"
           >
           <ImageView
+              android:id="@+id/edit_Btn"
               android:layout_gravity="center"
               android:layout_width="@dimen/_30sdp"
               android:layout_height="@dimen/_30sdp"
@@ -39,9 +40,11 @@
           android:gravity="right"
           android:layout_height="wrap_content">
           <ImageView
+              android:id="@+id/save_btn"
               android:layout_gravity="center"
               android:layout_width="@dimen/_30sdp"
               android:layout_height="@dimen/_30sdp"
+              android:visibility="gone"
               android:src="@drawable/ic_done"/>
       </LinearLayout>
 
@@ -62,16 +65,18 @@
             android:layout_width="@dimen/_30sdp"
             android:layout_height="@dimen/_30sdp"
             android:src="@drawable/ic_account"/>
-        <TextView
+        <EditText
             android:id="@+id/viewName"
            android:layout_marginTop="@dimen/_2sdp"
             android:layout_marginBottom="@dimen/_10sdp"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textSize="@dimen/_22sdp"
             android:gravity="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
+            android:enabled="false"
+            android:background="@null"
             android:text="UserName"/>
     </LinearLayout>
     <ScrollView
@@ -102,7 +107,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_18sdp"/>
-                <TextView
+                <EditText
                     android:id="@+id/viewPhoneNo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -110,6 +115,8 @@
                     android:layout_marginTop="@dimen/_2sdp"
                     android:layout_marginLeft="@dimen/_2sdp"
                     android:textColor="@color/orange"
+                    android:enabled="false"
+                    android:background="@null"
                     android:textSize="@dimen/_15sdp"
                     />
             </LinearLayout>
@@ -126,7 +133,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_18sdp"/>
-                <TextView
+                <EditText
                     android:id="@+id/viewAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -134,6 +141,8 @@
                     android:layout_marginTop="@dimen/_2sdp"
                     android:layout_marginLeft="@dimen/_2sdp"
                     android:textColor="@color/orange"
+                    android:enabled="false"
+                    android:background="@null"
                     android:textSize="@dimen/_15sdp"
                     />
             </LinearLayout>
@@ -150,7 +159,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_18sdp"/>
-                <TextView
+                <EditText
                     android:id="@+id/viewDob"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -158,6 +167,8 @@
                     android:layout_marginTop="@dimen/_2sdp"
                     android:layout_marginLeft="@dimen/_2sdp"
                     android:textColor="@color/orange"
+                    android:enabled="false"
+                    android:background="@null"
                     android:textSize="@dimen/_15sdp"
                     />
             </LinearLayout>
@@ -174,7 +185,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_18sdp"/>
-                <TextView
+                <EditText
                     android:id="@+id/viewPremium"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -182,6 +193,8 @@
                     android:layout_marginTop="@dimen/_2sdp"
                     android:layout_marginLeft="@dimen/_2sdp"
                     android:textColor="@color/orange"
+                    android:enabled="false"
+                    android:background="@null"
                     android:textSize="@dimen/_15sdp"
                     />
             </LinearLayout>
@@ -198,7 +211,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_18sdp"/>
-                <TextView
+                <EditText
                     android:id="@+id/viewPolicyTable"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -206,6 +219,8 @@
                     android:layout_marginTop="@dimen/_2sdp"
                     android:layout_marginLeft="@dimen/_2sdp"
                     android:textColor="@color/orange"
+                    android:enabled="false"
+                    android:background="@null"
                     android:textSize="@dimen/_15sdp"
                     />
             </LinearLayout>
@@ -222,7 +237,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_18sdp"/>
-                <TextView
+                <EditText
                     android:id="@+id/viewDoc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -230,6 +245,8 @@
                     android:layout_marginTop="@dimen/_2sdp"
                     android:layout_marginLeft="@dimen/_2sdp"
                     android:textColor="@color/orange"
+                    android:enabled="false"
+                    android:background="@null"
                     android:textSize="@dimen/_15sdp"
                     />
             </LinearLayout>
@@ -246,7 +263,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_18sdp"/>
-                <TextView
+                <EditText
                     android:id="@+id/viewDom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -254,6 +271,8 @@
                     android:layout_marginTop="@dimen/_2sdp"
                     android:layout_marginLeft="@dimen/_2sdp"
                     android:textColor="@color/orange"
+                    android:enabled="false"
+                    android:background="@null"
                     android:textSize="@dimen/_15sdp"
                     />
             </LinearLayout>
@@ -270,7 +289,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_18sdp"/>
-                <TextView
+                <EditText
                     android:id="@+id/viewDLP"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -278,6 +297,8 @@
                     android:layout_marginTop="@dimen/_2sdp"
                     android:layout_marginLeft="@dimen/_2sdp"
                     android:textColor="@color/orange"
+                    android:enabled="false"
+                    android:background="@null"
                     android:textSize="@dimen/_15sdp"
                     />
             </LinearLayout>
