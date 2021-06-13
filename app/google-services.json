@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "836276869336",
+    "firebase_url": "https://lic-agent-register-default-rtdb.firebaseio.com",
+    "project_id": "lic-agent-register",
+    "storage_bucket": "lic-agent-register.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:836276869336:android:7aa87a87611fd583559fad",
+        "android_client_info": {
+          "package_name": "com.jyotirmoy.licagentregister"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "836276869336-iuoimilmvjrtab4a43oh13abt3b1e081.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA26cbZ3bfweCPSs1ZJL1QgvmWf6Fi3Z_c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "836276869336-iuoimilmvjrtab4a43oh13abt3b1e081.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
