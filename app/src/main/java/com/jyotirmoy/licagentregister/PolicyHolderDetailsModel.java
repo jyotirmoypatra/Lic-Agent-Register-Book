@@ -1,11 +1,12 @@
 package com.jyotirmoy.licagentregister;
 
 public class PolicyHolderDetailsModel {
-   private String uid;
+    private String uid;
     private String name;
     private String phone;
     private String address;
     private String dob;
+    private String policyNo;
     private String premium;
     private String policyTableTerm;
     private String doc;
@@ -15,18 +16,22 @@ public class PolicyHolderDetailsModel {
     public PolicyHolderDetailsModel() {
     }
 
-    public PolicyHolderDetailsModel(String uid, String name, String phone, String address, String dob, String premium, String policyTableTerm, String doc, String dateMaturity, String dateLastPayment) {
+
+    public PolicyHolderDetailsModel(String uid, String name, String phone, String address, String dob, String policyNo, String premium, String policyTableTerm, String doc, String dateMaturity, String dateLastPayment) {
         this.uid = uid;
         this.name = name;
         this.phone = phone;
         this.address = address;
         this.dob = dob;
+        this.policyNo = policyNo;
         this.premium = premium;
         this.policyTableTerm = policyTableTerm;
         this.doc = doc;
         this.dateMaturity = dateMaturity;
         this.dateLastPayment = dateLastPayment;
     }
+
+
 
     public String getUid() {
         return uid;
@@ -66,6 +71,14 @@ public class PolicyHolderDetailsModel {
 
     public void setDob(String dob) {
         this.dob = dob;
+    }
+
+    public String getPolicyNo() {
+        return policyNo;
+    }
+
+    public void setPolicyNo(String policyNo) {
+        this.policyNo = policyNo;
     }
 
     public String getPremium() {

@@ -28,8 +28,8 @@ import java.lang.reflect.Type;
 
 public class ViewDetailsActivity extends AppCompatActivity {
 
-    String setName, setPhone, setAddress, setDOB, setPremium, setPolicyTable, setDOC, setDOM, setDLP, setUid;
-    EditText name, phone, address, dateOfBirth, premium, policyTable, dateOfCommitment, dateOfMaturity, dateOfLastPayment;
+    String setName, setPhone, setAddress, setDOB, setPolicyNo,setPremium, setPolicyTable, setDOC, setDOM, setDLP, setUid;
+    EditText name, phone, address, dateOfBirth, policyNumber,premium, policyTable, dateOfCommitment, dateOfMaturity, dateOfLastPayment;
     ImageView delete,edit,saveBtn;
     ProgressDialog pd;
     FirebaseDatabase database;
@@ -44,6 +44,7 @@ public class ViewDetailsActivity extends AppCompatActivity {
         phone = findViewById(R.id.viewPhoneNo);
         address = findViewById(R.id.viewAddress);
         dateOfBirth = findViewById(R.id.viewDob);
+        policyNumber=findViewById(R.id.viewPolicyNo);
         premium = findViewById(R.id.viewPremium);
         policyTable = findViewById(R.id.viewPolicyTable);
         dateOfCommitment = findViewById(R.id.viewDoc);
@@ -55,6 +56,7 @@ public class ViewDetailsActivity extends AppCompatActivity {
         setPhone = getIntent().getStringExtra("phoneNo");
         setAddress = getIntent().getStringExtra("address");
         setDOB = getIntent().getStringExtra("DOB");
+        setPolicyNo=getIntent().getStringExtra("PolicyNumber");
         setPremium = getIntent().getStringExtra("premium");
         setPolicyTable = getIntent().getStringExtra("policyTable");
         setDOC = getIntent().getStringExtra("DOC");
@@ -67,6 +69,7 @@ public class ViewDetailsActivity extends AppCompatActivity {
         phone.setText(setPhone);
         address.setText(setAddress);
         dateOfBirth.setText(setDOB);
+        policyNumber.setText(setPolicyNo);
         premium.setText(setPremium);
         policyTable.setText(setPolicyTable);
         dateOfCommitment.setText(setDOC);
@@ -163,6 +166,7 @@ public class ViewDetailsActivity extends AppCompatActivity {
                 String Phone = phone.getText().toString().trim();
                 String Address = address.getText().toString().trim();
                 String DOB = dateOfBirth.getText().toString().trim();
+                String PolicyNo =policyNumber.getText().toString().trim();
                 String Premium = premium.getText().toString().trim();
                 String PolicyTable = policyTable.getText().toString().trim();
                 String DOC = dateOfCommitment.getText().toString().trim();
@@ -175,7 +179,7 @@ public class ViewDetailsActivity extends AppCompatActivity {
                 }else{
 
                     DatabaseReference reference = database.getReference().child("user").child(auth.getUid()).child("PolicyHolder").child(setUid);
-                    PolicyHolderDetailsModel policyHolderDetailsModel = new PolicyHolderDetailsModel(setUid, FullName, Phone, Address, DOB, Premium,
+                    PolicyHolderDetailsModel policyHolderDetailsModel = new PolicyHolderDetailsModel(setUid, FullName, Phone, Address, DOB, PolicyNo,Premium,
                             PolicyTable, DOC, DateOfMaturity, DateOfLastPayment);
                     reference.setValue(policyHolderDetailsModel).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -227,6 +231,10 @@ public class ViewDetailsActivity extends AppCompatActivity {
         dateOfBirth.setBackgroundColor(Color.TRANSPARENT);
         dateOfBirth.setPadding(0,0,0,0);
 
+        policyNumber.setEnabled(false);
+        policyNumber.setBackgroundColor(Color.TRANSPARENT);
+        policyNumber.setPadding(0,0,0,0);
+
         premium.setEnabled(false);
         premium.setBackgroundColor(Color.TRANSPARENT);
         premium.setPadding(0,0,0,0);
@@ -264,6 +272,10 @@ public class ViewDetailsActivity extends AppCompatActivity {
         dateOfBirth.setEnabled(true);
         dateOfBirth.setBackgroundColor(Color.WHITE);
         dateOfBirth.setPadding(10,2,10,2);
+
+        policyNumber.setEnabled(true);
+        policyNumber.setBackgroundColor(Color.WHITE);
+        policyNumber.setPadding(10,2,10,2);
 
         premium.setEnabled(true);
         premium.setBackgroundColor(Color.WHITE);

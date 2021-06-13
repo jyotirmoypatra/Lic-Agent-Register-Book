@@ -47,6 +47,7 @@ public class PolicyHolderAdapter extends RecyclerView.Adapter<PolicyHolderAdapte
                intent.putExtra("phoneNo", filterItemList.get(position).getPhone());
                intent.putExtra("address", filterItemList.get(position).getAddress());
                intent.putExtra("DOB", filterItemList.get(position).getDob());
+               intent.putExtra("PolicyNumber", filterItemList.get(position).getPolicyNo());
                intent.putExtra("premium", filterItemList.get(position).getPremium());
                intent.putExtra("policyTable", filterItemList.get(position).getPolicyTableTerm());
                intent.putExtra("DOC", filterItemList.get(position).getDoc());

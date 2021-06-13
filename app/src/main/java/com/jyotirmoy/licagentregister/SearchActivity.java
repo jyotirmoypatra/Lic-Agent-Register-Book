@@ -9,7 +9,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -30,12 +32,14 @@ public class SearchActivity extends AppCompatActivity {
      EditText searchBox;
      CharSequence search="";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
          searchBox=findViewById(R.id.searchName);
+
 
         auth=FirebaseAuth.getInstance();
         database=FirebaseDatabase.getInstance();
@@ -51,6 +55,7 @@ public class SearchActivity extends AppCompatActivity {
         recyclerView.setAdapter(policyHolderAdapter);
 
 
+
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -60,6 +65,7 @@ public class SearchActivity extends AppCompatActivity {
                     policyHolderDetailsModelList.add(policyHolderDetailsModel);
                 }
                 policyHolderAdapter.notifyDataSetChanged();
+
             }
 
             @Override

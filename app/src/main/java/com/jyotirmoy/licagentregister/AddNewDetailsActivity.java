@@ -28,7 +28,7 @@ import java.util.UUID;
 
 public class AddNewDetailsActivity extends AppCompatActivity {
 
-    EditText name, phoneNo, address, dob, premium, policyTable, Doc, dateMaturity, dateLastPayment;
+    EditText name, phoneNo, address, dob,policyNo, premium, policyTable, Doc, dateMaturity, dateLastPayment;
     TextView save_btn;
     final Calendar myCalendar = Calendar.getInstance();
     FirebaseDatabase database;
@@ -46,6 +46,7 @@ public class AddNewDetailsActivity extends AppCompatActivity {
         phoneNo = findViewById(R.id.enterPhoneNo);
         address = findViewById(R.id.enterAddress);
         dob = findViewById(R.id.enterDob);
+        policyNo=findViewById(R.id.enterPolicyNo);
         premium = findViewById(R.id.enterPremium);
         policyTable = findViewById(R.id.enterPolicyTable);
         Doc = findViewById(R.id.enterDoc);
@@ -159,6 +160,7 @@ public class AddNewDetailsActivity extends AppCompatActivity {
                 String Phone = phoneNo.getText().toString().trim();
                 String Address = address.getText().toString().trim();
                 String DOB = dob.getText().toString().trim();
+                String PolicyNo =policyNo.getText().toString().trim();
                 String Premium = premium.getText().toString().trim();
                 String PolicyTable = policyTable.getText().toString().trim();
                 String DOC = Doc.getText().toString().trim();
@@ -181,6 +183,10 @@ public class AddNewDetailsActivity extends AppCompatActivity {
                     pd.dismiss();
                     dob.setError("Please Enter Date Of Birth");
                     Toast.makeText(AddNewDetailsActivity.this, "Please Enter DOB", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(PolicyNo)) {
+                    pd.dismiss();
+                    policyNo.setError("Please Enter Date Of Birth");
+                    Toast.makeText(AddNewDetailsActivity.this, "Please Enter DOB", Toast.LENGTH_SHORT).show();
                 } else if (TextUtils.isEmpty(Premium)) {
                     pd.dismiss();
                     premium.setError("Please Enter Premium");
@@ -197,7 +203,7 @@ public class AddNewDetailsActivity extends AppCompatActivity {
 
                     String RandomUid = UUID.randomUUID().toString();
                     DatabaseReference reference = database.getReference().child("user").child(auth.getUid()).child("PolicyHolder").child(RandomUid);
-                    PolicyHolderDetailsModel policyHolderDetailsModel = new PolicyHolderDetailsModel(RandomUid, FullName, Phone, Address, DOB, Premium,
+                    PolicyHolderDetailsModel policyHolderDetailsModel = new PolicyHolderDetailsModel(RandomUid, FullName, Phone, Address, DOB, PolicyNo,Premium,
                             PolicyTable, DOC, DateOfMaturity, DateOfLastPayment);
                     reference.setValue(policyHolderDetailsModel).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -210,6 +216,7 @@ public class AddNewDetailsActivity extends AppCompatActivity {
                                 phoneNo.setText("");
                                 address.setText("");
                                 dob.setText("");
+                                policyNo.setText("");
                                 premium.setText("");
                                 policyTable.setText("");
                                 Doc.setText("");

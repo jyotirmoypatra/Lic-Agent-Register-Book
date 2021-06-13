@@ -1,330 +1,347 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbarThumbVertical="@android:color/darker_gray"
-    android:background="#10273A"
-    >
-
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context=".ViewDetailsActivity">
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-android:layout_marginTop="@dimen/_20sdp"
-
-        android:background="#10273A"
-        android:isScrollContainer="true"
         android:orientation="vertical"
+        android:elevation="5dp"
+        android:padding="@dimen/_10sdp"
+        >
 
-        tools:context=".AddNewDetailsActivity">
-
-
-        <LinearLayout
-            android:id="@+id/name"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
 
-            <ImageView
-                android:layout_width="@dimen/_26sdp"
-                android:layout_height="@dimen/_26sdp"
-                android:src="@drawable/ic_account" />
-
-            <EditText
-                android:id="@+id/enterName"
+            android:paddingTop="@dimen/_15sdp"
+            android:paddingLeft="@dimen/_5sdp"
+            android:paddingRight="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_15sdp"
+            android:background="@drawable/recyclerview_additem">
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_5sdp"
-                android:background="@drawable/edittext_add_details_page"
-                android:elevation="@dimen/_10sdp"
-                android:hint="Enter Name"
-                android:padding="@dimen/_8sdp"
-                android:textColor="@color/black" />
-        </LinearLayout>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-        <LinearLayout
-            android:id="@+id/phoneNo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/name"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:gravity="center"
-            android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="@dimen/_26sdp"
+                        android:layout_height="@dimen/_26sdp"
+                        android:src="@drawable/ic_account" />
 
-            <ImageView
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="@dimen/_25sdp"
-                android:src="@drawable/ic_phone" />
+                    <EditText
+                        android:id="@+id/enterName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:background="@drawable/edittext_add_details_page"
+                        android:hint="Enter Name"
+                        android:padding="@dimen/_8sdp"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/phoneNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
 
-            <EditText
-                android:id="@+id/enterPhoneNo"
-                android:inputType="number"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_5sdp"
-                android:background="@drawable/edittext_add_details_page"
-                android:elevation="@dimen/_10sdp"
-                android:hint="Enter Phone No"
-                android:padding="@dimen/_8sdp"
-                android:textColor="@color/black" />
-        </LinearLayout>
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-        <LinearLayout
-            android:id="@+id/Dob"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/address"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:gravity="center"
-            android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:src="@drawable/ic_phone" />
 
-            <ImageView
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="@dimen/_25sdp"
-                android:src="@drawable/ic_calendar" />
+                    <EditText
+                        android:id="@+id/enterPhoneNo"
+                        android:inputType="number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:background="@drawable/edittext_add_details_page"
+                        android:hint="Enter Phone No"
+                        android:padding="@dimen/_8sdp"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/phoneNo"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/enterDob"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_5sdp"
-                android:background="@drawable/edittext_add_details_page"
-                android:elevation="@dimen/_10sdp"
-                android:hint="Date Of Birth"
-                android:clickable="false"
-                android:cursorVisible="false"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:padding="@dimen/_8sdp"
-                android:textColor="@color/black" />
+                    <ImageView
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:src="@drawable/ic_location" />
 
+                    <EditText
+                        android:id="@+id/enterAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:background="@drawable/edittext_add_details_page"
+                        android:hint="Enter Address"
+                        android:padding="@dimen/_8sdp"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/Dob"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/address"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-        </LinearLayout>
+                    <ImageView
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:src="@drawable/ic_calendar" />
 
-
-        <LinearLayout
-            android:id="@+id/address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/phoneNo"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="@dimen/_25sdp"
-                android:src="@drawable/ic_location" />
-
-            <EditText
-                android:id="@+id/enterAddress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_5sdp"
-                android:background="@drawable/edittext_add_details_page"
-                android:elevation="@dimen/_10sdp"
-                android:hint="Enter Address"
-                android:padding="@dimen/_8sdp"
-                android:textColor="@color/black" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/Premium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/Dob"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="@dimen/_25sdp"
-                android:src="@drawable/rupes_icon" />
-
-            <EditText
-                android:id="@+id/enterPremium"
-                android:layout_width="match_parent"
-                android:inputType="number"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_5sdp"
-                android:background="@drawable/edittext_add_details_page"
-                android:elevation="@dimen/_10sdp"
-                android:hint="Premium"
-                android:padding="@dimen/_8sdp"
-                android:textColor="@color/black" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/policyTable"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/Premium"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="@dimen/_25sdp"
-                android:src="@drawable/ic_table" />
-
-            <EditText
-                android:id="@+id/enterPolicyTable"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_5sdp"
-                android:background="@drawable/edittext_add_details_page"
-                android:elevation="@dimen/_10sdp"
-                android:hint="Policy Table and Term"
-                android:padding="@dimen/_8sdp"
-                android:textColor="@color/black" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/Doc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/policyTable"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="@dimen/_25sdp"
-                android:src="@drawable/ic_calendar" />
-
-            <EditText
-                android:id="@+id/enterDoc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_5sdp"
-                android:background="@drawable/edittext_add_details_page"
-                android:elevation="@dimen/_10sdp"
-                android:hint="DOC"
-                android:padding="@dimen/_8sdp"
-                android:textColor="@color/black"
-                android:clickable="false"
-                android:cursorVisible="false"
-                android:focusable="false"
-                android:focusableInTouchMode="false"/>
+                    <EditText
+                        android:id="@+id/enterDob"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:background="@drawable/edittext_add_details_page"
+                        android:hint="Date Of Birth"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:padding="@dimen/_8sdp"
+                        android:textColor="@color/black" />
 
 
-        </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/policyNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/Dob"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-        <LinearLayout
-            android:id="@+id/dateMaturity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/Doc"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:gravity="center"
-            android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:src="@drawable/ic_policy_icon" />
 
-            <ImageView
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="@dimen/_25sdp"
-                android:src="@drawable/ic_calendar" />
+                    <EditText
+                        android:id="@+id/enterPolicyNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:background="@drawable/edittext_add_details_page"
+                        android:hint="Enter Policy No"
+                        android:padding="@dimen/_8sdp"
+                        android:textColor="@color/black" />
+                </LinearLayout>
 
-            <EditText
-                android:id="@+id/enterDateMaturity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_5sdp"
-                android:background="@drawable/edittext_add_details_page"
-                android:elevation="@dimen/_10sdp"
-                android:hint="Date of Maturity"
-                android:padding="@dimen/_8sdp"
-                android:textColor="@color/black"
-                android:clickable="false"
-                android:cursorVisible="false"
-                android:focusable="false"
-                android:focusableInTouchMode="false"/>
+                <LinearLayout
+                    android:id="@+id/Premium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/policyNo"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:src="@drawable/rupes_icon" />
+
+                    <EditText
+                        android:id="@+id/enterPremium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:background="@drawable/edittext_add_details_page"
+                        android:hint="Premium"
+                        android:padding="@dimen/_8sdp"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/policyTable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/Premium"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:src="@drawable/ic_table" />
+
+                    <EditText
+                        android:id="@+id/enterPolicyTable"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:background="@drawable/edittext_add_details_page"
+                        android:hint="Policy Table and Term"
+                        android:padding="@dimen/_8sdp"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/Doc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/policyTable"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:src="@drawable/ic_calendar" />
+
+                    <EditText
+                        android:id="@+id/enterDoc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:background="@drawable/edittext_add_details_page"
+                        android:hint="DOC"
+                        android:padding="@dimen/_8sdp"
+                        android:textColor="@color/black"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"/>
 
 
-        </LinearLayout>
+                </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/lastPayment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/dateMaturity"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:gravity="center"
-            android:orientation="horizontal">
+                <LinearLayout
+                    android:id="@+id/dateMaturity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/Doc"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="@dimen/_25sdp"
-                android:src="@drawable/ic_calendar" />
+                    <ImageView
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:src="@drawable/ic_calendar" />
 
-            <EditText
-                android:id="@+id/enterLastPayment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_5sdp"
-                android:background="@drawable/edittext_add_details_page"
-                android:elevation="@dimen/_10sdp"
-                android:hint="Date of Last Payment"
-                android:padding="@dimen/_8sdp"
-                android:textColor="@color/black"
-                android:clickable="false"
-                android:cursorVisible="false"
-                android:focusable="false"
-                android:focusableInTouchMode="false"/>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/lastPayment"
-            android:layout_marginTop="@dimen/_25sdp"
-            android:layout_marginBottom="@dimen/_20sdp"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/saveBtn"
-
-                android:layout_width="@dimen/_100sdp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/lastPayment"
-                android:background="@drawable/savebtn"
-                android:gravity="center"
-                android:padding="@dimen/_4sdp"
-                android:text="Save"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_20sdp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
+                    <EditText
+                        android:id="@+id/enterDateMaturity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:background="@drawable/edittext_add_details_page"
+                        android:hint="Date of Maturity"
+                        android:padding="@dimen/_8sdp"
+                        android:textColor="@color/black"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"/>
 
 
-    </RelativeLayout>
-</ScrollView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lastPayment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/dateMaturity"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:src="@drawable/ic_calendar" />
+
+                    <EditText
+                        android:id="@+id/enterLastPayment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:background="@drawable/edittext_add_details_page"
+                        android:hint="Date of Last Payment"
+                        android:padding="@dimen/_8sdp"
+                        android:textColor="@color/black"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"/>
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/lastPayment"
+                    android:layout_marginTop="@dimen/_25sdp"
+                    android:layout_marginBottom="@dimen/_20sdp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/saveBtn"
+
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/lastPayment"
+                        android:background="@drawable/savebtn"
+                        android:gravity="center"
+                        android:padding="@dimen/_4sdp"
+                        android:text="Save"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_20sdp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+</RelativeLayout>
