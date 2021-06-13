@@ -193,14 +193,6 @@ public class AddNewDetailsActivity extends AppCompatActivity {
                     pd.dismiss();
                     Doc.setError("Please Enter DOC");
                     Toast.makeText(AddNewDetailsActivity.this, "Please Enter DOC", Toast.LENGTH_SHORT).show();
-                } else if (TextUtils.isEmpty(DateOfMaturity)) {
-                    pd.dismiss();
-                    dateMaturity.setError("Please Enter Date Of Maturity");
-                    Toast.makeText(AddNewDetailsActivity.this, "Please Enter Date Of Maturity", Toast.LENGTH_SHORT).show();
-                } else if (TextUtils.isEmpty(DateOfLastPayment)) {
-                    pd.dismiss();
-                    dateLastPayment.setError("Please Enter Date Of Last Payment");
-                    Toast.makeText(AddNewDetailsActivity.this, "Please Enter Date of Last Payment", Toast.LENGTH_SHORT).show();
                 } else {
 
                     String RandomUid = UUID.randomUUID().toString();

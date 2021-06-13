@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -151,8 +152,100 @@ public class ViewDetailsActivity extends AppCompatActivity {
         });
 
 
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                pd.setMessage("Updating..");
+                pd.setCancelable(false);
+                pd.show();
+                String FullName = name.getText().toString().trim();
+                String Phone = phone.getText().toString().trim();
+                String Address = address.getText().toString().trim();
+                String DOB = dateOfBirth.getText().toString().trim();
+                String Premium = premium.getText().toString().trim();
+                String PolicyTable = policyTable.getText().toString().trim();
+                String DOC = dateOfCommitment.getText().toString().trim();
+                String DateOfMaturity = dateOfMaturity.getText().toString().trim();
+                String DateOfLastPayment = dateOfLastPayment.getText().toString().trim();
+                if (TextUtils.isEmpty(FullName)) {
+                    pd.dismiss();
+                    name.setError("Please Enter Name");
+                    Toast.makeText(ViewDetailsActivity.this, "Please Enter Name", Toast.LENGTH_SHORT).show();
+                }else{
+
+                    DatabaseReference reference = database.getReference().child("user").child(auth.getUid()).child("PolicyHolder").child(setUid);
+                    PolicyHolderDetailsModel policyHolderDetailsModel = new PolicyHolderDetailsModel(setUid, FullName, Phone, Address, DOB, Premium,
+                            PolicyTable, DOC, DateOfMaturity, DateOfLastPayment);
+                    reference.setValue(policyHolderDetailsModel).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                pd.dismiss();
+                                Toast.makeText(ViewDetailsActivity.this, "Successfully Updated Details", Toast.LENGTH_LONG).show();
+                                disableEditText();
+                            }else{
+                                pd.dismiss();
+                                Toast.makeText(ViewDetailsActivity.this, "Failed to Update Details!!!", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            pd.dismiss();
+                            Toast.makeText(ViewDetailsActivity.this, "Failed!!" + e.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
+
+            }
+        });
 
 
+
+
+    }
+
+    private void disableEditText() {
+
+        edit.setVisibility(View.VISIBLE);
+        saveBtn.setVisibility(View.GONE);
+
+        name.setEnabled(false);
+        name.setBackgroundColor(Color.TRANSPARENT);
+        name.setPadding(0,0,0,0);
+
+        phone.setEnabled(false);
+        phone.setBackgroundColor(Color.TRANSPARENT);
+        phone.setPadding(0,0,0,0);
+
+        address.setEnabled(false);
+        address.setBackgroundColor(Color.TRANSPARENT);
+        address.setPadding(0,0,0,0);
+
+        dateOfBirth.setEnabled(false);
+        dateOfBirth.setBackgroundColor(Color.TRANSPARENT);
+        dateOfBirth.setPadding(0,0,0,0);
+
+        premium.setEnabled(false);
+        premium.setBackgroundColor(Color.TRANSPARENT);
+        premium.setPadding(0,0,0,0);
+
+        policyTable.setEnabled(false);
+        policyTable.setBackgroundColor(Color.TRANSPARENT);
+        policyTable.setPadding(0,0,0,0);
+
+        dateOfCommitment.setEnabled(false);
+        dateOfCommitment.setBackgroundColor(Color.TRANSPARENT);
+        dateOfCommitment.setPadding(0,0,0,0);
+
+        dateOfMaturity.setEnabled(false);
+        dateOfMaturity.setBackgroundColor(Color.TRANSPARENT);
+        dateOfMaturity.setPadding(0,0,0,0);
+
+        dateOfLastPayment.setEnabled(true);
+        dateOfLastPayment.setBackgroundColor(Color.TRANSPARENT);
+        dateOfLastPayment.setPadding(0,0,0,0);
     }
 
     private void enableEditText() {
@@ -193,5 +286,12 @@ public class ViewDetailsActivity extends AppCompatActivity {
         dateOfLastPayment.setPadding(10,2,10,2);
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        finishAffinity();
+        startActivity(new Intent(ViewDetailsActivity.this,SearchActivity.class));
+        finish();
     }
 }
