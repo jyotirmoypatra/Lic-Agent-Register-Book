@@ -12,12 +12,13 @@ public class PolicyHolderDetailsModel {
     private String doc;
     private String dateMaturity;
     private String dateLastPayment;
+    private String sumAssured;
 
     public PolicyHolderDetailsModel() {
     }
 
 
-    public PolicyHolderDetailsModel(String uid, String name, String phone, String address, String dob, String policyNo, String premium, String policyTableTerm, String doc, String dateMaturity, String dateLastPayment) {
+    public PolicyHolderDetailsModel(String uid, String name, String phone, String address, String dob, String policyNo, String premium, String policyTableTerm, String doc, String dateMaturity, String dateLastPayment, String sumAssured) {
         this.uid = uid;
         this.name = name;
         this.phone = phone;
@@ -29,8 +30,8 @@ public class PolicyHolderDetailsModel {
         this.doc = doc;
         this.dateMaturity = dateMaturity;
         this.dateLastPayment = dateLastPayment;
+        this.sumAssured = sumAssured;
     }
-
 
 
     public String getUid() {
@@ -119,5 +120,13 @@ public class PolicyHolderDetailsModel {
 
     public void setDateLastPayment(String dateLastPayment) {
         this.dateLastPayment = dateLastPayment;
+    }
+
+    public String getSumAssured() {
+        return sumAssured;
+    }
+
+    public void setSumAssured(String sumAssured) {
+        this.sumAssured = sumAssured;
     }
 }

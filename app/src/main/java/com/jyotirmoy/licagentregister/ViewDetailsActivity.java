@@ -28,8 +28,8 @@ import java.lang.reflect.Type;
 
 public class ViewDetailsActivity extends AppCompatActivity {
 
-    String setName, setPhone, setAddress, setDOB, setPolicyNo,setPremium, setPolicyTable, setDOC, setDOM, setDLP, setUid;
-    EditText name, phone, address, dateOfBirth, policyNumber,premium, policyTable, dateOfCommitment, dateOfMaturity, dateOfLastPayment;
+    String setName, setPhone, setAddress, setDOB, setPolicyNo,setPremium, setPolicyTable, setDOC, setDOM, setDLP, setSumAssured,setUid;
+    EditText name, phone, address, dateOfBirth, policyNumber,premium, policyTable, dateOfCommitment, dateOfMaturity, dateOfLastPayment,sumAssured;
     ImageView delete,edit,saveBtn;
     ProgressDialog pd;
     FirebaseDatabase database;
@@ -50,6 +50,7 @@ public class ViewDetailsActivity extends AppCompatActivity {
         dateOfCommitment = findViewById(R.id.viewDoc);
         dateOfMaturity = findViewById(R.id.viewDom);
         dateOfLastPayment = findViewById(R.id.viewDLP);
+        sumAssured=findViewById(R.id.viewSumAssured);
 
 
         setName = getIntent().getStringExtra("name");
@@ -62,6 +63,7 @@ public class ViewDetailsActivity extends AppCompatActivity {
         setDOC = getIntent().getStringExtra("DOC");
         setDOM = getIntent().getStringExtra("DOM");
         setDLP = getIntent().getStringExtra("DLP");
+        setSumAssured = getIntent().getStringExtra("SumAssured");
         setUid = getIntent().getStringExtra("uid");
 
 
@@ -75,6 +77,7 @@ public class ViewDetailsActivity extends AppCompatActivity {
         dateOfCommitment.setText(setDOC);
         dateOfMaturity.setText(setDOM);
         dateOfLastPayment.setText(setDLP);
+        sumAssured.setText(setSumAssured);
 
 
         pd = new ProgressDialog(this);
@@ -172,6 +175,7 @@ public class ViewDetailsActivity extends AppCompatActivity {
                 String DOC = dateOfCommitment.getText().toString().trim();
                 String DateOfMaturity = dateOfMaturity.getText().toString().trim();
                 String DateOfLastPayment = dateOfLastPayment.getText().toString().trim();
+                String SumAssured = sumAssured.getText().toString().trim();
                 if (TextUtils.isEmpty(FullName)) {
                     pd.dismiss();
                     name.setError("Please Enter Name");
@@ -180,7 +184,7 @@ public class ViewDetailsActivity extends AppCompatActivity {
 
                     DatabaseReference reference = database.getReference().child("user").child(auth.getUid()).child("PolicyHolder").child(setUid);
                     PolicyHolderDetailsModel policyHolderDetailsModel = new PolicyHolderDetailsModel(setUid, FullName, Phone, Address, DOB, PolicyNo,Premium,
-                            PolicyTable, DOC, DateOfMaturity, DateOfLastPayment);
+                            PolicyTable, DOC, DateOfMaturity, DateOfLastPayment,SumAssured);
                     reference.setValue(policyHolderDetailsModel).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
@@ -251,9 +255,13 @@ public class ViewDetailsActivity extends AppCompatActivity {
         dateOfMaturity.setBackgroundColor(Color.TRANSPARENT);
         dateOfMaturity.setPadding(0,0,0,0);
 
-        dateOfLastPayment.setEnabled(true);
+        dateOfLastPayment.setEnabled(false);
         dateOfLastPayment.setBackgroundColor(Color.TRANSPARENT);
         dateOfLastPayment.setPadding(0,0,0,0);
+
+        sumAssured.setEnabled(false);
+        sumAssured.setBackgroundColor(Color.TRANSPARENT);
+        sumAssured.setPadding(0,0,0,0);
     }
 
     private void enableEditText() {
@@ -296,6 +304,10 @@ public class ViewDetailsActivity extends AppCompatActivity {
        dateOfLastPayment.setEnabled(true);
         dateOfLastPayment.setBackgroundColor(Color.WHITE);
         dateOfLastPayment.setPadding(10,2,10,2);
+
+        sumAssured.setEnabled(true);
+        sumAssured.setBackgroundColor(Color.WHITE);
+        sumAssured.setPadding(10,2,10,2);
 
 
     }

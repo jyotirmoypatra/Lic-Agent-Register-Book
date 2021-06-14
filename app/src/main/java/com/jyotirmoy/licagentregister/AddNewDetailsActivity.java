@@ -28,7 +28,7 @@ import java.util.UUID;
 
 public class AddNewDetailsActivity extends AppCompatActivity {
 
-    EditText name, phoneNo, address, dob,policyNo, premium, policyTable, Doc, dateMaturity, dateLastPayment;
+    EditText name, phoneNo, address, dob,policyNo, premium, policyTable, Doc, dateMaturity, dateLastPayment,sumAssured;
     TextView save_btn;
     final Calendar myCalendar = Calendar.getInstance();
     FirebaseDatabase database;
@@ -52,6 +52,7 @@ public class AddNewDetailsActivity extends AppCompatActivity {
         Doc = findViewById(R.id.enterDoc);
         dateMaturity = findViewById(R.id.enterDateMaturity);
         dateLastPayment = findViewById(R.id.enterLastPayment);
+        sumAssured=findViewById(R.id.enterSumAssured);
 
 
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
@@ -166,6 +167,7 @@ public class AddNewDetailsActivity extends AppCompatActivity {
                 String DOC = Doc.getText().toString().trim();
                 String DateOfMaturity = dateMaturity.getText().toString().trim();
                 String DateOfLastPayment = dateLastPayment.getText().toString().trim();
+                String SumAssured = sumAssured.getText().toString().trim();
 
                 if (TextUtils.isEmpty(FullName)) {
                     pd.dismiss();
@@ -204,7 +206,7 @@ public class AddNewDetailsActivity extends AppCompatActivity {
                     String RandomUid = UUID.randomUUID().toString();
                     DatabaseReference reference = database.getReference().child("user").child(auth.getUid()).child("PolicyHolder").child(RandomUid);
                     PolicyHolderDetailsModel policyHolderDetailsModel = new PolicyHolderDetailsModel(RandomUid, FullName, Phone, Address, DOB, PolicyNo,Premium,
-                            PolicyTable, DOC, DateOfMaturity, DateOfLastPayment);
+                            PolicyTable, DOC, DateOfMaturity, DateOfLastPayment,SumAssured);
                     reference.setValue(policyHolderDetailsModel).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
@@ -222,6 +224,7 @@ public class AddNewDetailsActivity extends AppCompatActivity {
                                 Doc.setText("");
                                 dateMaturity.setText("");
                                 dateLastPayment.setText("");
+                                sumAssured.setText("");
                                 startActivity(new Intent(AddNewDetailsActivity.this, MainActivity.class));
                                 finish();
 

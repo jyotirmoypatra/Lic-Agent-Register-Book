@@ -53,6 +53,7 @@ public class PolicyHolderAdapter extends RecyclerView.Adapter<PolicyHolderAdapte
                intent.putExtra("DOC", filterItemList.get(position).getDoc());
                intent.putExtra("DOM", filterItemList.get(position).getDateMaturity());
                intent.putExtra("DLP", filterItemList.get(position).getDateLastPayment());
+               intent.putExtra("SumAssured", filterItemList.get(position).getSumAssured());
 
                intent.putExtra("uid", filterItemList.get(position).getUid());
                context.startActivity(intent);
