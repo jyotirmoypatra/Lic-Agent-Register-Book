@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Lic Agent Register</string>
+    <string name="total_policy_holder">Total policy holder: %1$d</string>
+    <string name="total_policy_holder_zero">Total policy holder: 0</string>
 </resources>

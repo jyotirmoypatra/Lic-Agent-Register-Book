@@ -25,11 +25,23 @@
         android:background="@drawable/search_bar"
         android:drawableEnd="@drawable/ic_search"/>
 
-
+    <TextView
+        android:id="@+id/totalPolicyHolder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchName"
+        android:layout_marginLeft="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:layout_marginRight="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_3sdp"
+        android:text="@string/total_policy_holder_zero"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_below="@id/searchName"
+        android:layout_below="@id/totalPolicyHolder"
         android:elevation="5dp"
         android:background="@drawable/recyclerviewshape"
         android:layout_margin="@dimen/_5sdp"

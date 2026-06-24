@@ -12,6 +12,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -30,6 +31,7 @@ public class SearchActivity extends AppCompatActivity {
      FirebaseDatabase database;
      FirebaseAuth auth;
      EditText searchBox;
+     TextView totalPolicyHolder;
      CharSequence search="";
 
 
@@ -39,6 +41,7 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
 
          searchBox=findViewById(R.id.searchName);
+         totalPolicyHolder=findViewById(R.id.totalPolicyHolder);
 
 
         auth=FirebaseAuth.getInstance();
@@ -60,10 +63,17 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+                policyHolderDetailsModelList.clear();
                 for(DataSnapshot dataSnapshot:snapshot.getChildren()){
                     PolicyHolderDetailsModel policyHolderDetailsModel=dataSnapshot.getValue(PolicyHolderDetailsModel.class);
-                    policyHolderDetailsModelList.add(policyHolderDetailsModel);
+                    if (policyHolderDetailsModel != null) {
+                        policyHolderDetailsModelList.add(policyHolderDetailsModel);
+                    }
                 }
+                totalPolicyHolder.setText(getString(
+                        R.string.total_policy_holder,
+                        policyHolderDetailsModelList.size()
+                ));
                 policyHolderAdapter.notifyDataSetChanged();
 
             }
