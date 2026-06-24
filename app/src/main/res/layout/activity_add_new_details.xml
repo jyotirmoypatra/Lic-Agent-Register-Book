@@ -1,433 +1,388 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ViewDetailsActivity">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#3B55FF"
-        android:elevation="5dp"
+    android:background="@color/search_screen_background"
+    tools:context=".AddNewDetailsActivity">
 
-        >
-      <TextView
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:gravity="center"
-          android:background="#ED8C00"
-          android:padding="@dimen/_4sdp"
-          android:textSize="@dimen/_25sdp"
-          android:textStyle="bold"
-          android:textColor="#FFFFFF"
-          android:text="Add Details"/>
-        <ScrollView
+    <View
+        android:id="@+id/addDetailsHeader"
+        android:layout_width="0dp"
+        android:layout_height="85dp"
+        android:background="@drawable/search_header_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/addDetailsBackButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/back"
+        android:padding="9dp"
+        android:src="@drawable/ic_arrow_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/white" />
+
+    <TextView
+        android:id="@+id/addDetailsTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/add_policy_holder"
+        android:textColor="@color/white"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/addDetailsBackButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/addDetailsBackButton"
+        app:layout_constraintTop_toTopOf="@id/addDetailsBackButton" />
+
+    <TextView
+        android:id="@+id/addDetailsSubtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="24dp"
+        android:text="@string/add_details_subtitle"
+        android:textColor="@color/search_header_subtitle"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addDetailsBackButton" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addDetailsHeader">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="@dimen/_2sdp"
-            >
-            <LinearLayout
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="18dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="18dp"
+            android:paddingBottom="28dp">
+
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-                <LinearLayout
-                    android:id="@+id/name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/personal_information"
+                android:textColor="@color/search_primary_text"
+                android:textSize="17sp"
+                android:textStyle="bold" />
 
-                    <ImageView
-                        android:layout_width="@dimen/_26sdp"
-                        android:layout_height="@dimen/_26sdp"
-                        android:src="@drawable/ic_account" />
-
-                    <EditText
-                        android:id="@+id/enterName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:background="@drawable/edittext_add_details_page"
-                        android:hint="Enter Name"
-                        android:padding="@dimen/_8sdp"
-                        android:textColor="@color/black" />
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/phoneNo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_15sdp"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="@dimen/_25sdp"
-                        android:layout_height="@dimen/_25sdp"
-                        android:src="@drawable/ic_phone" />
-
-                    <EditText
-                        android:id="@+id/enterPhoneNo"
-                        android:inputType="number"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:background="@drawable/edittext_add_details_page"
-                        android:hint="Enter Phone No"
-                        android:padding="@dimen/_8sdp"
-                        android:textColor="@color/black" />
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/address"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/phoneNo"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_15sdp"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="@dimen/_25sdp"
-                        android:layout_height="@dimen/_25sdp"
-                        android:src="@drawable/ic_location" />
-
-                    <EditText
-                        android:id="@+id/enterAddress"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:background="@drawable/edittext_add_details_page"
-                        android:hint="Enter Address"
-                        android:padding="@dimen/_8sdp"
-                        android:textColor="@color/black" />
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/Dob"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/address"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_15sdp"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="@dimen/_25sdp"
-                        android:layout_height="@dimen/_25sdp"
-                        android:src="@drawable/ic_calendar" />
-
-                    <EditText
-                        android:id="@+id/enterDob"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:background="@drawable/edittext_add_details_page"
-                        android:hint="Date Of Birth"
-                        android:clickable="false"
-                        android:cursorVisible="false"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        android:padding="@dimen/_8sdp"
-                        android:textColor="@color/black" />
-
-
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/policyNo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/Dob"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_15sdp"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="@dimen/_25sdp"
-                        android:layout_height="@dimen/_25sdp"
-                        android:src="@drawable/ic_policy_icon" />
-
-                    <EditText
-                        android:id="@+id/enterPolicyNo"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:background="@drawable/edittext_add_details_page"
-                        android:hint="Enter Policy No"
-                        android:padding="@dimen/_8sdp"
-                        android:textColor="@color/black" />
-                </LinearLayout>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="2dp"
+                app:strokeColor="@color/search_card_stroke"
+                app:strokeWidth="1dp">
 
                 <LinearLayout
-                    android:id="@+id/Premium"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/policyNo"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_15sdp"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                    <ImageView
-                        android:layout_width="@dimen/_25sdp"
-                        android:layout_height="@dimen/_25sdp"
-                        android:src="@mipmap/rupees" />
-
-                    <EditText
-                        android:id="@+id/enterPremium"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:background="@drawable/edittext_add_details_page"
-                        android:hint="Premium"
-                        android:padding="@dimen/_8sdp"
-                        android:textColor="@color/black" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/policyTable"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/Premium"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_15sdp"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="@dimen/_25sdp"
-                        android:layout_height="@dimen/_25sdp"
-                        android:src="@drawable/ic_table" />
-
-                    <EditText
-                        android:id="@+id/enterPolicyTable"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:background="@drawable/edittext_add_details_page"
-                        android:hint="Policy Table and Term"
-                        android:padding="@dimen/_8sdp"
-                        android:textColor="@color/black" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/Doc"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/policyTable"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_15sdp"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="@dimen/_25sdp"
-                        android:layout_height="@dimen/_25sdp"
-                        android:src="@drawable/ic_calendar" />
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:background="@drawable/edittext_add_details_page"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:layout_height="wrap_content">
+                        android:id="@+id/name"
+                        style="@style/ModernFormField">
+
+                        <ImageView
+                            style="@style/ModernFormIcon"
+                            android:contentDescription="@null"
+                            android:src="@drawable/ic_account" />
+
+                        <EditText
+                            android:id="@+id/enterName"
+                            style="@style/ModernFormEditText"
+                            android:hint="@string/enter_name"
+                            android:inputType="textCapWords" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/phoneNo"
+                        style="@style/ModernFormField.Spaced">
+
+                        <ImageView
+                            style="@style/ModernFormIcon"
+                            android:contentDescription="@null"
+                            android:src="@drawable/ic_phone" />
+
+                        <EditText
+                            android:id="@+id/enterPhoneNo"
+                            style="@style/ModernFormEditText"
+                            android:hint="@string/enter_phone_number"
+                            android:inputType="phone" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/address"
+                        style="@style/ModernFormField.Spaced">
+
+                        <ImageView
+                            style="@style/ModernFormIcon"
+                            android:contentDescription="@null"
+                            android:src="@drawable/ic_location" />
+
+                        <EditText
+                            android:id="@+id/enterAddress"
+                            style="@style/ModernFormEditText"
+                            android:hint="@string/enter_address"
+                            android:inputType="textPostalAddress"
+                            android:maxLines="2" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/Dob"
+                        style="@style/ModernFormField.Spaced">
+
+                        <ImageView
+                            style="@style/ModernFormIcon"
+                            android:contentDescription="@null"
+                            android:src="@drawable/ic_calendar" />
+
+                        <EditText
+                            android:id="@+id/enterDob"
+                            style="@style/ModernFormEditText"
+                            android:clickable="true"
+                            android:cursorVisible="false"
+                            android:focusable="false"
+                            android:hint="@string/date_of_birth" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/policy_information"
+                android:textColor="@color/search_primary_text"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="2dp"
+                app:strokeColor="@color/search_card_stroke"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:id="@+id/policyNo"
+                        style="@style/ModernFormField">
+
+                        <ImageView
+                            style="@style/ModernFormIcon"
+                            android:contentDescription="@null"
+                            android:src="@drawable/ic_policy_icon" />
+
+                        <EditText
+                            android:id="@+id/enterPolicyNo"
+                            style="@style/ModernFormEditText"
+                            android:hint="@string/enter_policy_number"
+                            android:inputType="text" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/Premium"
+                        style="@style/ModernFormField.Spaced">
+
+                        <ImageView
+                            style="@style/ModernFormIcon"
+                            android:contentDescription="@null"
+                            android:src="@mipmap/rupees" />
+
+                        <EditText
+                            android:id="@+id/enterPremium"
+                            style="@style/ModernFormEditText"
+                            android:hint="@string/premium"
+                            android:inputType="numberDecimal" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/policyTable"
+                        style="@style/ModernFormField.Spaced">
+
+                        <ImageView
+                            style="@style/ModernFormIcon"
+                            android:contentDescription="@null"
+                            android:src="@drawable/ic_table" />
+
+                        <EditText
+                            android:id="@+id/enterPolicyTable"
+                            style="@style/ModernFormEditText"
+                            android:hint="@string/policy_table_and_term"
+                            android:inputType="text" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/sumAssured"
+                        style="@style/ModernFormField.Spaced">
+
+                        <ImageView
+                            style="@style/ModernFormIcon"
+                            android:contentDescription="@null"
+                            android:src="@mipmap/rupees" />
+
+                        <EditText
+                            android:id="@+id/enterSumAssured"
+                            style="@style/ModernFormEditText"
+                            android:hint="@string/sum_assured"
+                            android:inputType="numberDecimal" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/important_dates"
+                android:textColor="@color/search_primary_text"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="2dp"
+                app:strokeColor="@color/search_card_stroke"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:id="@+id/Doc"
+                        style="@style/ModernFormField">
+
+                        <ImageView
+                            style="@style/ModernFormIcon"
+                            android:contentDescription="@null"
+                            android:src="@drawable/ic_calendar" />
+
                         <EditText
                             android:id="@+id/enterDoc"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:hint="DOC"
-                            android:padding="@dimen/_8sdp"
-                            android:background="@null"
-                            android:textColor="@color/black"
-                            android:clickable="false"
+                            style="@style/ModernFormEditText"
+                            android:clickable="true"
                             android:cursorVisible="false"
                             android:focusable="false"
-                            android:focusableInTouchMode="false"/>
+                            android:hint="@string/date_of_commencement" />
+
                         <ImageView
                             android:id="@+id/clearDoc"
-                            android:layout_width="@dimen/_25sdp"
-                            android:layout_height="@dimen/_25sdp"
+                            style="@style/ModernClearIcon"
+                            android:contentDescription="@string/clear_date"
                             android:src="@mipmap/cross"
-                            android:layout_gravity="center"
-                            android:layout_margin="@dimen/_5sdp"
-                            android:visibility="gone"
-                            android:padding="@dimen/_5sdp"
-                            android:clickable="true"
-                            android:focusable="true" />
+                            android:visibility="gone" />
                     </LinearLayout>
 
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/dateMaturity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/Doc"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_15sdp"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="@dimen/_25sdp"
-                        android:layout_height="@dimen/_25sdp"
-                        android:src="@drawable/ic_calendar" />
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:background="@drawable/edittext_add_details_page"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:layout_height="wrap_content">
+                        android:id="@+id/dateMaturity"
+                        style="@style/ModernFormField.Spaced">
+
+                        <ImageView
+                            style="@style/ModernFormIcon"
+                            android:contentDescription="@null"
+                            android:src="@drawable/ic_calendar" />
+
                         <EditText
                             android:id="@+id/enterDateMaturity"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@null"
-                            android:hint="Date of Maturity"
-                            android:padding="@dimen/_8sdp"
-                            android:textColor="@color/black"
-                            android:clickable="false"
+                            style="@style/ModernFormEditText"
+                            android:clickable="true"
                             android:cursorVisible="false"
                             android:focusable="false"
-                            android:focusableInTouchMode="false"/>
+                            android:hint="@string/date_of_maturity" />
+
                         <ImageView
                             android:id="@+id/clearMaturity"
-                            android:layout_width="@dimen/_25sdp"
-                            android:layout_height="@dimen/_25sdp"
+                            style="@style/ModernClearIcon"
+                            android:contentDescription="@string/clear_date"
                             android:src="@mipmap/cross"
-                            android:layout_gravity="center"
-                            android:layout_margin="@dimen/_5sdp"
-                            android:visibility="gone"
-                            android:padding="@dimen/_5sdp"
-                            android:clickable="true"
-                            android:focusable="true" />
+                            android:visibility="gone" />
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:id="@+id/lastPayment"
+                        style="@style/ModernFormField.Spaced">
 
+                        <ImageView
+                            style="@style/ModernFormIcon"
+                            android:contentDescription="@null"
+                            android:src="@drawable/ic_calendar" />
 
+                        <EditText
+                            android:id="@+id/enterLastPayment"
+                            style="@style/ModernFormEditText"
+                            android:clickable="true"
+                            android:cursorVisible="false"
+                            android:focusable="false"
+                            android:hint="@string/date_of_last_payment" />
 
+                        <ImageView
+                            android:id="@+id/clearLastPaymentDate"
+                            style="@style/ModernClearIcon"
+                            android:contentDescription="@string/clear_date"
+                            android:src="@mipmap/cross"
+                            android:visibility="gone" />
+                    </LinearLayout>
                 </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-                <LinearLayout
-                    android:id="@+id/lastPayment"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/dateMaturity"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_15sdp"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+            <TextView
+                android:id="@+id/saveBtn"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/modern_primary_button"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:text="@string/save_policy_holder"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
 
-                    <ImageView
-                        android:layout_width="@dimen/_25sdp"
-                        android:layout_height="@dimen/_25sdp"
-                        android:src="@drawable/ic_calendar" />
-                     <LinearLayout
-                         android:layout_width="match_parent"
-                         android:background="@drawable/edittext_add_details_page"
-                         android:layout_marginStart="@dimen/_5sdp"
-                         android:layout_height="wrap_content">
-                         <EditText
-                             android:id="@+id/enterLastPayment"
-                             android:layout_width="0dp"
-                             android:layout_weight="1"
-                             android:layout_height="wrap_content"
-                             android:hint="Date of Last Payment"
-                             android:padding="@dimen/_8sdp"
-                             android:textColor="@color/black"
-                             android:clickable="false"
-                             android:background="@null"
-                             android:cursorVisible="false"
-                             android:focusable="false"
-                             android:focusableInTouchMode="false"/>
-                         <ImageView
-                             android:id="@+id/clearLastPaymentDate"
-                             android:layout_width="@dimen/_25sdp"
-                             android:layout_height="@dimen/_25sdp"
-                             android:src="@mipmap/cross"
-                             android:layout_gravity="center"
-                             android:layout_margin="@dimen/_5sdp"
-                             android:visibility="gone"
-                             android:padding="@dimen/_5sdp"
-                             android:clickable="true"
-                             android:focusable="true" />
-                     </LinearLayout>
-
-
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/sumAssured"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/lastPayment"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_15sdp"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="@dimen/_25sdp"
-                        android:layout_height="@dimen/_25sdp"
-                        android:src="@mipmap/rupees" />
-
-                    <EditText
-                        android:id="@+id/enterSumAssured"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:background="@drawable/edittext_add_details_page"
-                        android:hint="Enter Sum Assured"
-                        android:padding="@dimen/_8sdp"
-                        android:textColor="@color/black"
-                        />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/sumAssured"
-                    android:layout_marginTop="@dimen/_25sdp"
-                    android:layout_marginBottom="@dimen/_20sdp"
-                    android:gravity="center">
-
-                    <TextView
-                        android:id="@+id/saveBtn"
-                        android:layout_width="@dimen/_150sdp"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/lastPayment"
-                        android:background="@drawable/savebtn"
-                        android:gravity="center"
-                        android:padding="@dimen/_8sdp"
-                        android:text="Save"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_20sdp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-        </ScrollView>
-
-    </LinearLayout>
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.LicAgentRegister.Splash" parent="Theme.LicAgentRegister">
+        <item name="android:windowSplashScreenBackground">@color/search_header_start</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/transparent_splash_icon</item>
+        <item name="android:windowSplashScreenAnimationDuration">0</item>
+        <item name="android:windowBackground">@drawable/splash_background</item>
+        <item name="android:statusBarColor">@color/search_header_start</item>
+        <item name="android:navigationBarColor">@color/search_header_start</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+</resources>

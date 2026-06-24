@@ -1,34 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="@dimen/_10sdp"
-    android:layout_marginRight="@dimen/_10sdp"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginEnd="20dp"
+    android:layout_marginBottom="6dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:strokeColor="@color/search_card_stroke"
+    app:strokeWidth="1dp">
 
-    android:orientation="vertical">
-
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_5sdp"
-        android:background="@drawable/item_raw_style"
-        android:elevation="1dp"
-        >
+        android:minHeight="96dp"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/avatar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/policy_avatar_background"
+            android:gravity="center"
+            android:text="A"
+            android:textColor="@color/search_accent"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="JP" />
 
         <TextView
             android:id="@+id/namePolicyHolder"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_5sdp"
-            android:drawableStart="@drawable/ic_account"
-            android:drawablePadding="@dimen/_5sdp"
-            android:gravity="center"
-            android:padding="@dimen/_5sdp"
-            android:text="User Name"
-            android:textColor="@color/white"
-            android:textStyle="bold" />
-    </LinearLayout>
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="10dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/search_primary_text"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/viewDetailsIcon"
+            app:layout_constraintStart_toEndOf="@id/avatar"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Jyotirmoy Patra" />
 
+        <TextView
+            android:id="@+id/policyNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="7dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/search_secondary_text"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toStartOf="@id/viewDetailsIcon"
+            app:layout_constraintStart_toEndOf="@id/avatar"
+            app:layout_constraintTop_toBottomOf="@id/namePolicyHolder"
+            tools:text="Policy no. 123456789" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/phoneNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="3dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/search_secondary_text"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toStartOf="@id/viewDetailsIcon"
+            app:layout_constraintStart_toEndOf="@id/avatar"
+            app:layout_constraintTop_toBottomOf="@id/policyNumber"
+            tools:text="+91 98765 43210" />
+
+        <ImageView
+            android:id="@+id/viewDetailsIcon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/policy_arrow_background"
+            android:contentDescription="@string/view_details"
+            android:padding="8dp"
+            android:src="@drawable/ic_chevron_right"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/search_accent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

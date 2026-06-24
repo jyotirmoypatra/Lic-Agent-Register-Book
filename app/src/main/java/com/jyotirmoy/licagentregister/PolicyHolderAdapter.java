@@ -15,9 +15,14 @@ import java.util.ArrayList;
 
 
 public class PolicyHolderAdapter extends RecyclerView.Adapter<PolicyHolderAdapter.ViewHolder> {
+    public interface OnFilterResultListener {
+        void onFilterResult(int resultCount);
+    }
+
     Context context;
     ArrayList<PolicyHolderDetailsModel> policyHolderDetailsModelArrayList;
     ArrayList<PolicyHolderDetailsModel> filterItemList;
+    OnFilterResultListener filterResultListener;
 
 
     public PolicyHolderAdapter(Context context, ArrayList<PolicyHolderDetailsModel> policyHolderDetailsModelArrayList) {
@@ -37,26 +42,44 @@ public class PolicyHolderAdapter extends RecyclerView.Adapter<PolicyHolderAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-       holder.name.setText(filterItemList.get(position).getName());
+       PolicyHolderDetailsModel policyHolder = filterItemList.get(position);
+       String name = policyHolder.getName();
+       holder.name.setText(name);
+       holder.avatar.setText(getInitials(name));
+
+       String policyNumber = policyHolder.getPolicyNo();
+       holder.policyNumber.setText(isBlank(policyNumber)
+               ? context.getString(R.string.policy_number_unavailable)
+               : context.getString(R.string.policy_number_format, policyNumber));
+
+       String phoneNumber = policyHolder.getPhone();
+       holder.phoneNumber.setText(isBlank(phoneNumber)
+               ? context.getString(R.string.phone_unavailable)
+               : phoneNumber);
       // ItemAnimation.animateFadeIn(holder.itemView,position);
        holder.itemView.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
                Intent intent = new Intent(context, ViewDetailsActivity.class);
-               intent.putExtra("name", filterItemList.get(position).getName());
-               intent.putExtra("phoneNo", filterItemList.get(position).getPhone());
-               intent.putExtra("address", filterItemList.get(position).getAddress());
-               intent.putExtra("DOB", filterItemList.get(position).getDob());
-               intent.putExtra("PolicyNumber", filterItemList.get(position).getPolicyNo());
-               intent.putExtra("premium", filterItemList.get(position).getPremium());
-               intent.putExtra("policyTable", filterItemList.get(position).getPolicyTableTerm());
-               intent.putExtra("DOC", filterItemList.get(position).getDoc());
-               intent.putExtra("DOM", filterItemList.get(position).getDateMaturity());
-               intent.putExtra("DLP", filterItemList.get(position).getDateLastPayment());
-               intent.putExtra("SumAssured", filterItemList.get(position).getSumAssured());
-
-               intent.putExtra("uid", filterItemList.get(position).getUid());
+               intent.putExtra("name", policyHolder.getName());
+               intent.putExtra("phoneNo", policyHolder.getPhone());
+               intent.putExtra("address", policyHolder.getAddress());
+               intent.putExtra("DOB", policyHolder.getDob());
+               intent.putExtra("PolicyNumber", policyHolder.getPolicyNo());
+               intent.putExtra("premium", policyHolder.getPremium());
+               intent.putExtra("policyTable", policyHolder.getPolicyTableTerm());
+               intent.putExtra("DOC", policyHolder.getDoc());
+               intent.putExtra("DOM", policyHolder.getDateMaturity());
+               intent.putExtra("DLP", policyHolder.getDateLastPayment());
+               intent.putExtra("SumAssured", policyHolder.getSumAssured());
+               intent.putExtra("uid", policyHolder.getUid());
                context.startActivity(intent);
+               if (context instanceof SearchActivity) {
+                   ((SearchActivity) context).overridePendingTransition(
+                           R.anim.slide_in_right,
+                           R.anim.slide_out_left
+                   );
+               }
            }
        });
     }
@@ -66,32 +89,60 @@ public class PolicyHolderAdapter extends RecyclerView.Adapter<PolicyHolderAdapte
         return filterItemList.size();
     }
 
+    public void setOnFilterResultListener(OnFilterResultListener listener) {
+        this.filterResultListener = listener;
+    }
+
       class ViewHolder extends RecyclerView.ViewHolder{
-        TextView name;
+        TextView name, avatar, policyNumber, phoneNumber;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             name=itemView.findViewById(R.id.namePolicyHolder);
+            avatar=itemView.findViewById(R.id.avatar);
+            policyNumber=itemView.findViewById(R.id.policyNumber);
+            phoneNumber=itemView.findViewById(R.id.phoneNumber);
         }
+    }
+
+    private boolean isBlank(String value) {
+        return value == null || value.trim().isEmpty();
+    }
+
+    private String getInitials(String name) {
+        if (isBlank(name)) {
+            return "?";
+        }
+
+        String[] words = name.trim().split("\\s+");
+        StringBuilder initials = new StringBuilder();
+        initials.append(Character.toUpperCase(words[0].charAt(0)));
+        if (words.length > 1) {
+            initials.append(Character.toUpperCase(words[words.length - 1].charAt(0)));
+        }
+        return initials.toString();
     }
     public Filter getFilter(){
         return  new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence charSequence) {
                 String Key =charSequence.toString();
+                ArrayList<PolicyHolderDetailsModel> filtered;
                 if(Key.isEmpty()){
-                    filterItemList=policyHolderDetailsModelArrayList;
+                    filtered = new ArrayList<>(policyHolderDetailsModelArrayList);
                 }else {
-                    ArrayList<PolicyHolderDetailsModel> filtered = new ArrayList<>();
+                    filtered = new ArrayList<>();
                     for(PolicyHolderDetailsModel row:policyHolderDetailsModelArrayList){
-                        if(row.getName().toLowerCase().contains(Key.toLowerCase())){
+                        if(!isBlank(row.getName())
+                                && row.getName().toLowerCase().contains(Key.toLowerCase())){
                             filtered.add(row);
                         }
                     }
                     filterItemList=filtered;
                 }
                 FilterResults results=new FilterResults();
-                results.values=filterItemList;
+                results.values=filtered;
+                results.count=filtered.size();
                 return results;
             }
 
@@ -100,9 +151,11 @@ public class PolicyHolderAdapter extends RecyclerView.Adapter<PolicyHolderAdapte
 
                 filterItemList=(ArrayList<PolicyHolderDetailsModel>)results.values;
                 notifyDataSetChanged();
+                if (filterResultListener != null) {
+                    filterResultListener.onFilterResult(results.count);
+                }
 
             }
         };
     }
     }
-

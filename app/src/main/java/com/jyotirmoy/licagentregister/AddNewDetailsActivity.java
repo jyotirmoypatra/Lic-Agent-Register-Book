@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,8 +42,13 @@ public class AddNewDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setStatusBarColor(getColor(R.color.search_header_start));
+        getWindow().getDecorView().setSystemUiVisibility(0);
         setContentView(R.layout.activity_add_new_details);
         pd = new ProgressDialog(this);
+
+        ImageButton backButton = findViewById(R.id.addDetailsBackButton);
+        backButton.setOnClickListener(view -> onBackPressed());
 
         name = findViewById(R.id.enterName);
         phoneNo = findViewById(R.id.enterPhoneNo);
@@ -257,8 +263,8 @@ public class AddNewDetailsActivity extends AppCompatActivity {
                                 dateMaturity.setText("");
                                 dateLastPayment.setText("");
                                 sumAssured.setText("");
-                                startActivity(new Intent(AddNewDetailsActivity.this, MainActivity.class));
                                 finish();
+                                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
 
                             } else {
                                 pd.dismiss();
@@ -310,5 +316,11 @@ public class AddNewDetailsActivity extends AppCompatActivity {
 
 
         dob.setText(sdf.format(myCalendar.getTime()));
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

@@ -13,4 +13,11 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Theme.LicAgentRegister.Splash" parent="Theme.LicAgentRegister">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+        <item name="android:statusBarColor">@color/search_header_start</item>
+        <item name="android:navigationBarColor">@color/search_header_start</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
 </resources>

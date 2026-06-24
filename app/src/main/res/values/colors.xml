@@ -9,4 +9,14 @@
     <color name="white">#FFFFFFFF</color>
     <color name="orange">#F64810</color>
     <color name="green">#06FF10</color>
+    <color name="search_screen_background">#F5F7FB</color>
+    <color name="search_header_start">#173B72</color>
+    <color name="search_header_end">#2563A9</color>
+    <color name="search_header_subtitle">#DCE8F8</color>
+    <color name="search_primary_text">#17243A</color>
+    <color name="search_secondary_text">#6B778C</color>
+    <color name="search_hint_text">#8C98AA</color>
+    <color name="search_accent">#1769AA</color>
+    <color name="search_accent_soft">#E8F2FC</color>
+    <color name="search_card_stroke">#E6EAF0</color>
 </resources>

@@ -7,14 +7,12 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -23,8 +21,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.lang.reflect.Type;
 
 public class ViewDetailsActivity extends AppCompatActivity {
 
@@ -38,7 +34,12 @@ public class ViewDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setStatusBarColor(getColor(R.color.search_header_start));
+        getWindow().getDecorView().setSystemUiVisibility(0);
         setContentView(R.layout.activity_view_details);
+
+        ImageButton backButton = findViewById(R.id.detailsBackButton);
+        backButton.setOnClickListener(view -> onBackPressed());
 
         name = findViewById(R.id.viewName);
         phone = findViewById(R.id.viewPhoneNo);
@@ -110,9 +111,8 @@ public class ViewDetailsActivity extends AppCompatActivity {
                                   pd.dismiss();
                                   Toast.makeText(ViewDetailsActivity.this,"Deleted Successfully",Toast.LENGTH_SHORT).show();
 
-                                  startActivity(new Intent(ViewDetailsActivity.this,SearchActivity.class));
-
                                   finish();
+                                  overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                               }else
                               {
                                   pd.dismiss();
@@ -219,103 +219,42 @@ public class ViewDetailsActivity extends AppCompatActivity {
         edit.setVisibility(View.VISIBLE);
         saveBtn.setVisibility(View.GONE);
 
-        name.setEnabled(false);
-        name.setBackgroundColor(Color.TRANSPARENT);
-        name.setPadding(0,0,0,0);
-
-        phone.setEnabled(false);
-        phone.setBackgroundColor(Color.TRANSPARENT);
-        phone.setPadding(0,0,0,0);
-
-        address.setEnabled(false);
-        address.setBackgroundColor(Color.TRANSPARENT);
-        address.setPadding(0,0,0,0);
-
-        dateOfBirth.setEnabled(false);
-        dateOfBirth.setBackgroundColor(Color.TRANSPARENT);
-        dateOfBirth.setPadding(0,0,0,0);
-
-        policyNumber.setEnabled(false);
-        policyNumber.setBackgroundColor(Color.TRANSPARENT);
-        policyNumber.setPadding(0,0,0,0);
-
-        premium.setEnabled(false);
-        premium.setBackgroundColor(Color.TRANSPARENT);
-        premium.setPadding(0,0,0,0);
-
-        policyTable.setEnabled(false);
-        policyTable.setBackgroundColor(Color.TRANSPARENT);
-        policyTable.setPadding(0,0,0,0);
-
-        dateOfCommitment.setEnabled(false);
-        dateOfCommitment.setBackgroundColor(Color.TRANSPARENT);
-        dateOfCommitment.setPadding(0,0,0,0);
-
-        dateOfMaturity.setEnabled(false);
-        dateOfMaturity.setBackgroundColor(Color.TRANSPARENT);
-        dateOfMaturity.setPadding(0,0,0,0);
-
-        dateOfLastPayment.setEnabled(false);
-        dateOfLastPayment.setBackgroundColor(Color.TRANSPARENT);
-        dateOfLastPayment.setPadding(0,0,0,0);
-
-        sumAssured.setEnabled(false);
-        sumAssured.setBackgroundColor(Color.TRANSPARENT);
-        sumAssured.setPadding(0,0,0,0);
+        setFieldsEditable(false);
     }
 
     private void enableEditText() {
-        name.setEnabled(true);
-        name.setBackgroundColor(Color.WHITE);
-        name.setPadding(10,2,10,2);
+        setFieldsEditable(true);
+        name.requestFocus();
+        name.setSelection(name.getText().length());
+    }
 
-        phone.setEnabled(true);
-        phone.setBackgroundColor(Color.WHITE);
-        phone.setPadding(10,2,10,2);
+    private void setFieldsEditable(boolean editable) {
+        EditText[] fields = {
+                name, phone, address, dateOfBirth, policyNumber, premium,
+                policyTable, dateOfCommitment, dateOfMaturity,
+                dateOfLastPayment, sumAssured
+        };
 
-        address.setEnabled(true);
-        address.setBackgroundColor(Color.WHITE);
-        address.setPadding(10,2,10,2);
+        int horizontalPadding = editable
+                ? (int) (12 * getResources().getDisplayMetrics().density)
+                : 0;
+        int verticalPadding = editable
+                ? (int) (8 * getResources().getDisplayMetrics().density)
+                : 0;
 
-        dateOfBirth.setEnabled(true);
-        dateOfBirth.setBackgroundColor(Color.WHITE);
-        dateOfBirth.setPadding(10,2,10,2);
-
-        policyNumber.setEnabled(true);
-        policyNumber.setBackgroundColor(Color.WHITE);
-        policyNumber.setPadding(10,2,10,2);
-
-        premium.setEnabled(true);
-        premium.setBackgroundColor(Color.WHITE);
-        premium.setPadding(10,2,10,2);
-
-        policyTable.setEnabled(true);
-        policyTable.setBackgroundColor(Color.WHITE);
-        policyTable.setPadding(10,2,10,2);
-
-        dateOfCommitment.setEnabled(true);
-        dateOfCommitment.setBackgroundColor(Color.WHITE);
-        dateOfCommitment.setPadding(10,2,10,2);
-
-        dateOfMaturity.setEnabled(true);
-        dateOfMaturity.setBackgroundColor(Color.WHITE);
-        dateOfMaturity.setPadding(10,2,10,2);
-
-       dateOfLastPayment.setEnabled(true);
-        dateOfLastPayment.setBackgroundColor(Color.WHITE);
-        dateOfLastPayment.setPadding(10,2,10,2);
-
-        sumAssured.setEnabled(true);
-        sumAssured.setBackgroundColor(Color.WHITE);
-        sumAssured.setPadding(10,2,10,2);
-
-
+        for (EditText field : fields) {
+            field.setEnabled(editable);
+            field.setBackgroundResource(editable
+                    ? R.drawable.modern_form_field
+                    : android.R.color.transparent);
+            field.setPadding(horizontalPadding, verticalPadding,
+                    horizontalPadding, verticalPadding);
+        }
     }
 
     @Override
     public void onBackPressed() {
-        finishAffinity();
-        startActivity(new Intent(ViewDetailsActivity.this,SearchActivity.class));
         finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

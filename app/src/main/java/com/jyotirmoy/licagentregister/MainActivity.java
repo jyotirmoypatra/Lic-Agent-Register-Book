@@ -24,6 +24,8 @@ ImageView logout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setStatusBarColor(getColor(R.color.search_header_start));
+        getWindow().getDecorView().setSystemUiVisibility(0);
         setContentView(R.layout.activity_main);
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -70,6 +72,7 @@ ImageView logout;
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,AddNewDetailsActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
             }
         });
@@ -80,6 +83,7 @@ ImageView logout;
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,SearchActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
             }
         });
