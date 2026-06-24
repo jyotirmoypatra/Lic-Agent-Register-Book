@@ -26,17 +26,19 @@
         android:drawableEnd="@drawable/ic_search"/>
 
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_below="@id/searchName"
         android:elevation="5dp"
         android:background="@drawable/recyclerviewshape"
-        android:layout_margin="@dimen/_10sdp"
+        android:layout_margin="@dimen/_5sdp"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
 
-   
+
+
 
 
 </RelativeLayout>

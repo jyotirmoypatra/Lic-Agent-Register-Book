@@ -38,7 +38,7 @@ public class PolicyHolderAdapter extends RecyclerView.Adapter<PolicyHolderAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
        holder.name.setText(filterItemList.get(position).getName());
-       ItemAnimation.animateFadeIn(holder.itemView,position);
+      // ItemAnimation.animateFadeIn(holder.itemView,position);
        holder.itemView.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {

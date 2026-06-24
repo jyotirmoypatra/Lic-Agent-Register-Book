@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ import java.util.UUID;
 public class AddNewDetailsActivity extends AppCompatActivity {
 
     EditText name, phoneNo, address, dob,policyNo, premium, policyTable, Doc, dateMaturity, dateLastPayment,sumAssured;
+    ImageView clearMaturity,clearLastPaymentDate,clearDoc;
     TextView save_btn;
     final Calendar myCalendar = Calendar.getInstance();
     FirebaseDatabase database;
@@ -53,6 +55,10 @@ public class AddNewDetailsActivity extends AppCompatActivity {
         dateMaturity = findViewById(R.id.enterDateMaturity);
         dateLastPayment = findViewById(R.id.enterLastPayment);
         sumAssured=findViewById(R.id.enterSumAssured);
+
+        clearMaturity = findViewById(R.id.clearMaturity);
+        clearDoc = findViewById(R.id.clearDoc);
+        clearLastPaymentDate = findViewById(R.id.clearLastPaymentDate);
 
 
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
@@ -144,6 +150,32 @@ public class AddNewDetailsActivity extends AppCompatActivity {
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
+
+
+        clearMaturity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dateMaturity.setText("");
+                clearMaturity.setVisibility(View.GONE);
+            }
+        });
+
+        clearLastPaymentDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dateLastPayment.setText("");
+                clearLastPaymentDate.setVisibility(View.GONE);
+            }
+        });
+
+        clearDoc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Doc.setText("");
+                clearDoc.setVisibility(View.GONE);
+            }
+        });
+
 
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
@@ -252,25 +284,24 @@ public class AddNewDetailsActivity extends AppCompatActivity {
     private void updateDateLastPaymentLabel() {
         String myFormat = "dd/MM/YY"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-
-
         dateLastPayment.setText(sdf.format(myCalendar.getTime()));
+        clearLastPaymentDate.setVisibility(View.VISIBLE);
+
     }
 
     private void updateDateMaturityLabel() {
         String myFormat = "dd/MM/YY"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-
-
         dateMaturity.setText(sdf.format(myCalendar.getTime()));
+        clearMaturity.setVisibility(View.VISIBLE);
     }
 
     private void updateDocLabel() {
         String myFormat = "dd/MM/YY"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-
-
         Doc.setText(sdf.format(myCalendar.getTime()));
+        clearDoc.setVisibility(View.VISIBLE);
+
     }
 
     private void updateDobLabel() {

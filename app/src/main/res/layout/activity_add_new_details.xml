@@ -10,19 +10,25 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="#3B55FF"
         android:elevation="5dp"
-        android:padding="@dimen/_10sdp"
-        >
 
+        >
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:gravity="center"
+          android:background="#ED8C00"
+          android:padding="@dimen/_4sdp"
+          android:textSize="@dimen/_25sdp"
+          android:textStyle="bold"
+          android:textColor="#FFFFFF"
+          android:text="Add Details"/>
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
-            android:paddingTop="@dimen/_15sdp"
-            android:paddingLeft="@dimen/_5sdp"
-            android:paddingRight="@dimen/_5sdp"
-            android:paddingBottom="@dimen/_15sdp"
-            android:background="@drawable/recyclerview_additem">
+            android:padding="@dimen/_2sdp"
+            >
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -178,7 +184,7 @@
                     <ImageView
                         android:layout_width="@dimen/_25sdp"
                         android:layout_height="@dimen/_25sdp"
-                        android:src="@drawable/rupes_icon" />
+                        android:src="@mipmap/rupees" />
 
                     <EditText
                         android:id="@+id/enterPremium"
@@ -233,20 +239,37 @@
                         android:layout_width="@dimen/_25sdp"
                         android:layout_height="@dimen/_25sdp"
                         android:src="@drawable/ic_calendar" />
-
-                    <EditText
-                        android:id="@+id/enterDoc"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_5sdp"
                         android:background="@drawable/edittext_add_details_page"
-                        android:hint="DOC"
-                        android:padding="@dimen/_8sdp"
-                        android:textColor="@color/black"
-                        android:clickable="false"
-                        android:cursorVisible="false"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"/>
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_height="wrap_content">
+                        <EditText
+                            android:id="@+id/enterDoc"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="DOC"
+                            android:padding="@dimen/_8sdp"
+                            android:background="@null"
+                            android:textColor="@color/black"
+                            android:clickable="false"
+                            android:cursorVisible="false"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"/>
+                        <ImageView
+                            android:id="@+id/clearDoc"
+                            android:layout_width="@dimen/_25sdp"
+                            android:layout_height="@dimen/_25sdp"
+                            android:src="@mipmap/cross"
+                            android:layout_gravity="center"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:visibility="gone"
+                            android:padding="@dimen/_5sdp"
+                            android:clickable="true"
+                            android:focusable="true" />
+                    </LinearLayout>
+
 
 
                 </LinearLayout>
@@ -266,20 +289,38 @@
                         android:layout_width="@dimen/_25sdp"
                         android:layout_height="@dimen/_25sdp"
                         android:src="@drawable/ic_calendar" />
-
-                    <EditText
-                        android:id="@+id/enterDateMaturity"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_5sdp"
                         android:background="@drawable/edittext_add_details_page"
-                        android:hint="Date of Maturity"
-                        android:padding="@dimen/_8sdp"
-                        android:textColor="@color/black"
-                        android:clickable="false"
-                        android:cursorVisible="false"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"/>
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_height="wrap_content">
+                        <EditText
+                            android:id="@+id/enterDateMaturity"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:hint="Date of Maturity"
+                            android:padding="@dimen/_8sdp"
+                            android:textColor="@color/black"
+                            android:clickable="false"
+                            android:cursorVisible="false"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"/>
+                        <ImageView
+                            android:id="@+id/clearMaturity"
+                            android:layout_width="@dimen/_25sdp"
+                            android:layout_height="@dimen/_25sdp"
+                            android:src="@mipmap/cross"
+                            android:layout_gravity="center"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:visibility="gone"
+                            android:padding="@dimen/_5sdp"
+                            android:clickable="true"
+                            android:focusable="true" />
+                    </LinearLayout>
+
+
 
 
                 </LinearLayout>
@@ -299,20 +340,36 @@
                         android:layout_width="@dimen/_25sdp"
                         android:layout_height="@dimen/_25sdp"
                         android:src="@drawable/ic_calendar" />
-
-                    <EditText
-                        android:id="@+id/enterLastPayment"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:background="@drawable/edittext_add_details_page"
-                        android:hint="Date of Last Payment"
-                        android:padding="@dimen/_8sdp"
-                        android:textColor="@color/black"
-                        android:clickable="false"
-                        android:cursorVisible="false"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"/>
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:background="@drawable/edittext_add_details_page"
+                         android:layout_marginStart="@dimen/_5sdp"
+                         android:layout_height="wrap_content">
+                         <EditText
+                             android:id="@+id/enterLastPayment"
+                             android:layout_width="0dp"
+                             android:layout_weight="1"
+                             android:layout_height="wrap_content"
+                             android:hint="Date of Last Payment"
+                             android:padding="@dimen/_8sdp"
+                             android:textColor="@color/black"
+                             android:clickable="false"
+                             android:background="@null"
+                             android:cursorVisible="false"
+                             android:focusable="false"
+                             android:focusableInTouchMode="false"/>
+                         <ImageView
+                             android:id="@+id/clearLastPaymentDate"
+                             android:layout_width="@dimen/_25sdp"
+                             android:layout_height="@dimen/_25sdp"
+                             android:src="@mipmap/cross"
+                             android:layout_gravity="center"
+                             android:layout_margin="@dimen/_5sdp"
+                             android:visibility="gone"
+                             android:padding="@dimen/_5sdp"
+                             android:clickable="true"
+                             android:focusable="true" />
+                     </LinearLayout>
 
 
                 </LinearLayout>
@@ -330,7 +387,7 @@
                     <ImageView
                         android:layout_width="@dimen/_25sdp"
                         android:layout_height="@dimen/_25sdp"
-                        android:src="@drawable/rupes_icon" />
+                        android:src="@mipmap/rupees" />
 
                     <EditText
                         android:id="@+id/enterSumAssured"
@@ -356,13 +413,12 @@
 
                     <TextView
                         android:id="@+id/saveBtn"
-
-                        android:layout_width="@dimen/_100sdp"
+                        android:layout_width="@dimen/_150sdp"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/lastPayment"
                         android:background="@drawable/savebtn"
                         android:gravity="center"
-                        android:padding="@dimen/_4sdp"
+                        android:padding="@dimen/_8sdp"
                         android:text="Save"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_20sdp"

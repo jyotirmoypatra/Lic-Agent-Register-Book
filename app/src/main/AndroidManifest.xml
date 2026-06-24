@@ -17,7 +17,8 @@
         <activity
             android:name=".AddNewDetailsActivity"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".splashScreenActivity">
+        <activity android:name=".splashScreenActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
